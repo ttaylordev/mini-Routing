@@ -1,4 +1,22 @@
-var app = angular.module('slapAnApp', ['ui.router'])
-.controller('miniRouting', function(){
-
+angular.module('miniRouting', ['ui.router'])
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('home', {
+      url: '/',
+      // templateUrl: 'js/home/homeTmpl.html',
+      template: "hello" ,
+      controller: 'homeCtrl'
+    })
+    .state('settings', {
+      url: '/settings',
+      templateUrl: 'js/settings/settingsTmpl.html',
+      controller: 'settingsCtrl'
+    })
+    .state('products', {
+      url: '/products/:id',
+      templateUrl: 'js/products/productTmpl.html',
+      controller: 'productsCtrl'
+    });
+  $urlRouterProvider
+    .otherwise('/');
 });
